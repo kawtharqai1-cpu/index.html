@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المهندسة كوثر قاسم | تسويق رقمي وكتابة محتوى</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#0d0d0d;
+    --ink2:#3a3a3a;
+    --gold:#c9a84c;
+    --gold-light:#e8c97a;
+    --cream:#faf8f3;
+    --white:#ffffff;
+    --border:#e8e2d6;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    padding:1rem 2rem;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .nav-logo{font-size:1.1rem;font-weight:700;color:var(--ink);letter-spacing:0.5px}
+  .nav-logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{text-decoration:none;color:var(--ink2);font-size:0.9rem;font-weight:600;transition:color 0.2s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{
+    background:var(--ink);color:var(--white);
+    padding:0.55rem 1.4rem;border-radius:4px;
+    text-decoration:none;font-size:0.9rem;font-weight:700;
+    transition:background 0.2s;
+  }
+  .nav-cta:hover{background:var(--gold)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:var(--ink);
+    display:flex;align-items:center;
+    position:relative;overflow:hidden;
+    padding:7rem 2rem 4rem;
+  }
+  .hero-bg-text{
+    position:absolute;
+    font-size:22vw;font-weight:900;
+    color:rgba(255,255,255,0.03);
+    letter-spacing:-0.05em;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    white-space:nowrap;
+    pointer-events:none;
+    user-select:none;
+  }
+  .hero-inner{
+    max-width:1100px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    font-size:0.78rem;font-weight:700;
+    letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(201,168,76,0.4);
+    padding:0.35rem 1rem;border-radius:2px;
+    margin-bottom:1.5rem;
+  }
+  .hero h1{
+    font-size:3.8rem;font-weight:900;line-height:1.05;
+    color:var(--white);margin-bottom:1.2rem;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(135deg,var(--gold),var(--gold-light));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-desc{
+    font-size:1.05rem;line-height:1.8;
+    color:rgba(255,255,255,0.7);
+    margin-bottom:2.5rem;
+    max-width:480px;
+  }
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-gold{
+    background:var(--gold);color:var(--ink);
+    padding:0.85rem 2rem;border-radius:4px;
+    text-decoration:none;font-weight:700;font-size:0.95rem;
+    transition:all 0.2s;display:inline-block;
+  }
+  .btn-gold:hover{background:var(--gold-light)}
+  .btn-outline{
+    border:1px solid rgba(255,255,255,0.3);color:var(--white);
+    padding:0.85rem 2rem;border-radius:4px;
+    text-decoration:none;font-weight:600;font-size:0.95rem;
+    transition:all 0.2s;display:inline-block;
+  }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* HERO STATS CARD */
+  .hero-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;padding:2.5rem;
+  }
+  .hero-card-title{
+    font-size:0.78rem;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:2rem;
+  }
+  .stat-row{
+    display:flex;align-items:center;gap:1.5rem;
+    padding:1.2rem 0;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+  }
+  .stat-row:last-child{border-bottom:none}
+  .stat-num{
+    font-size:2.4rem;font-weight:900;
+    color:var(--white);min-width:80px;line-height:1;
+  }
+  .stat-num span{color:var(--gold)}
+  .stat-text{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.5}
+
+  /* SECTION COMMONS */
+  section{padding:6rem 2rem}
+  .container{max-width:1100px;margin:0 auto}
+  .section-tag{
+    font-size:0.75rem;font-weight:700;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:0.8rem;display:block;
+  }
+  .section-title{font-size:2.5rem;font-weight:900;color:var(--ink);line-height:1.1;margin-bottom:1rem}
+  .section-sub{font-size:1rem;color:var(--ink2);line-height:1.8;max-width:560px}
+
+  /* ABOUT */
+  .about{background:var(--cream)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .about-visual{
+    background:var(--ink);border-radius:8px;
+    padding:3rem 2.5rem;position:relative;overflow:hidden;
+  }
+  .about-visual::before{
+    content:'KQ';
+    position:absolute;font-size:8rem;font-weight:900;
+    color:rgba(255,255,255,0.04);
+    bottom:-1rem;left:-1rem;line-height:1;
+  }
+  .about-badge{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    background:rgba(201,168,76,0.15);
+    border:1px solid rgba(201,168,76,0.3);
+    color:var(--gold-light);
+    padding:0.4rem 1rem;border-radius:4px;
+    font-size:0.8rem;font-weight:700;
+    margin-bottom:1.5rem;
+  }
+  .about-visual h3{font-size:1.6rem;color:var(--white);font-weight:900;margin-bottom:0.5rem}
+  .about-visual p{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:2rem;line-height:1.7}
+  .mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .mini-stat{background:rgba(255,255,255,0.05);border-radius:6px;padding:1rem}
+  .mini-stat-n{font-size:1.8rem;font-weight:900;color:var(--gold);line-height:1}
+  .mini-stat-l{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.3rem}
+  .about-text p{font-size:1rem;line-height:1.9;color:var(--ink2);margin-bottom:1.2rem}
+  .about-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem}
+  .tag{
+    background:var(--white);border:1px solid var(--border);
+    color:var(--ink);padding:0.35rem 0.9rem;border-radius:3px;
+    font-size:0.8rem;font-weight:600;
+  }
+
+  /* SERVICES */
+  .services{background:var(--white)}
+  .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .service-card{
+    border:1px solid var(--border);border-radius:8px;
+    padding:2rem;position:relative;overflow:hidden;
+    transition:all 0.25s;cursor:default;
+    background:var(--white);
+  }
+  .service-card::after{
+    content:'';position:absolute;bottom:0;left:0;
+    width:100%;height:3px;background:var(--gold);
+    transform:scaleX(0);transform-origin:right;
+    transition:transform 0.3s ease;
+  }
+  .service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+  .service-card:hover::after{transform:scaleX(1);transform-origin:left}
+  .service-icon{
+    width:48px;height:48px;background:var(--cream);
+    border-radius:6px;display:flex;align-items:center;justify-content:center;
+    color:var(--gold);font-size:1.3rem;margin-bottom:1.2rem;
+  }
+  .service-card h3{font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:0.6rem}
+  .service-card p{font-size:0.88rem;color:var(--ink2);line-height:1.7;margin-bottom:1.5rem}
+  .service-price{
+    font-size:1.1rem;font-weight:900;color:var(--ink);
+    display:flex;align-items:center;gap:0.5rem;
+  }
+  .service-price span{font-size:0.78rem;font-weight:600;color:var(--ink2)}
+
+  /* WHY */
+  .why{background:var(--ink);color:var(--white)}
+  .why .section-title{color:var(--white)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+  .why-item{padding:1.8rem;border:1px solid rgba(255,255,255,0.08);border-radius:8px;transition:border-color 0.2s}
+  .why-item:hover{border-color:rgba(201,168,76,0.4)}
+  .why-num{
+    font-size:3rem;font-weight:900;
+    color:rgba(201,168,76,0.15);
+    line-height:1;margin-bottom:1rem;
+    font-family:'Cairo',sans-serif;
+  }
+  .why-item h4{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+  .why-item p{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7}
+
+  /* CONTACT */
+  .contact{background:var(--cream)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+  .contact-info{margin-top:2rem}
+  .contact-item{
+    display:flex;align-items:center;gap:1rem;
+    padding:1.2rem 0;border-bottom:1px solid var(--border);
+  }
+  .contact-item:last-child{border-bottom:none}
+  .contact-icon{
+    width:44px;height:44px;background:var(--ink);
+    border-radius:6px;display:flex;align-items:center;justify-content:center;
+    color:var(--gold);font-size:1rem;flex-shrink:0;
+  }
+  .contact-item-text{font-size:0.88rem;color:var(--ink2);line-height:1.5}
+  .contact-item-text strong{display:block;color:var(--ink);font-weight:700;margin-bottom:0.2rem}
+  .contact-form{
+    background:var(--white);border:1px solid var(--border);
+    border-radius:10px;padding:2.5rem;
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .form-group{margin-bottom:1.2rem}
+  .form-group label{display:block;font-size:0.82rem;font-weight:700;color:var(--ink);margin-bottom:0.45rem}
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:0.75rem 1rem;
+    border:1px solid var(--border);border-radius:5px;
+    font-family:'Cairo',sans-serif;font-size:0.9rem;
+    color:var(--ink);background:var(--white);
+    transition:border-color 0.2s;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--gold);
+  }
+  .form-group textarea{resize:vertical;min-height:110px}
+  .submit-btn{
+    width:100%;padding:0.95rem;
+    background:var(--ink);color:var(--white);
+    border:none;border-radius:5px;
+    font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;
+    cursor:pointer;transition:background 0.2s;
+  }
+  .submit-btn:hover{background:var(--gold);color:var(--ink)}
+
+  /* FOOTER */
+  footer{
+    background:var(--ink);color:rgba(255,255,255,0.5);
+    padding:2rem;text-align:center;font-size:0.85rem;
+    border-top:1px solid rgba(255,255,255,0.05);
+  }
+  footer a{color:var(--gold);text-decoration:none}
+
+  /* MOBILE */
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:3rem}
+    .hero h1{font-size:2.8rem}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+    .services-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr 1fr}
+    nav .nav-links{display:none}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:2.2rem}
+    .section-title{font-size:1.9rem}
+    .why-grid{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    nav{padding:0.8rem 1rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">كوثر<span>.</span>قاسم</div>
+  <ul class="nav-links">
+    <li><a href="#about">عني</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#why">لماذا أنا</a></li>
+    <li><a href="#contact">تواصلي معي</a></li>
+  </ul>
+  <a href="https://wa.me/9647853794900" class="nav-cta" target="_blank">واتساب</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">KQ</div>
+  <div class="hero-inner container">
+    <div>
+      <div class="hero-eyebrow">تسويق رقمي · كتابة محتوى</div>
+      <h1>المهندسة<br><em>كوثر قاسم</em></h1>
+      <p class="hero-desc">
+        أحوّل وجودك الرقمي إلى نتائج حقيقية — بخبرة أكثر من 4 سنوات في إدارة الحملات الإعلانية وكتابة المحتوى الذي يُحرّك الجمهور.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">ابدأ معي الآن</a>
+        <a href="#services" class="btn-outline">اكتشف الخدمات</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">الإنجازات بالأرقام</div>
+      <div class="stat-row">
+        <div class="stat-num">200<span>+</span></div>
+        <div class="stat-text">مشروع كتابة محتوى<br>منجز باحترافية</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">500<span>+</span></div>
+        <div class="stat-text">حملة إعلانية ممولة<br>محققة لنتائج فعلية</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">4<span>+</span></div>
+        <div class="stat-text">سنوات خبرة متخصصة<br>في التسويق الرقمي</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="about-badge"><i class="fas fa-certificate"></i> متخصصة معتمدة</div>
+      <h3>المهندسة كوثر قاسم</h3>
+      <p>مسوّقة رقمية وكاتبة محتوى محترفة</p>
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <div class="mini-stat-n">200+</div>
+          <div class="mini-stat-l">مشروع محتوى</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-n">500+</div>
+          <div class="mini-stat-l">حملة إعلانية</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-n">4+</div>
+          <div class="mini-stat-l">سنوات خبرة</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-n">100%</div>
+          <div class="mini-stat-l">التزام بالنتائج</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-tag">من أنا</span>
+      <h2 class="section-title">خبرة تُترجَم<br>إلى نتائج</h2>
+      <p>
+        أنا المهندسة كوثر قاسم، متخصصة في التسويق الإلكتروني وكتابة المحتوى الاحترافي. على مدار أكثر من 4 سنوات، عملت مع علامات تجارية من مختلف القطاعات لبناء حضور رقمي قوي وقابل للقياس.
+      </p>
+      <p>
+        أتميز بقدرة على فهم جوهر كل مشروع وترجمته إلى محتوى يتحدث لغة الجمهور المستهدف — سواء كان النص أو الحملة الإعلانية أو استراتيجية السوشل ميديا الكاملة.
+      </p>
+      <div class="about-tags">
+        <span class="tag">إدارة الحملات الإعلانية</span>
+        <span class="tag">كتابة المحتوى</span>
+        <span class="tag">إدارة السوشل ميديا</span>
+        <span class="tag">استشارات تسويقية</span>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">Content Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <span class="section-tag">الخدمات</span>
+        <h2 class="section-title">ما أقدمه لك</h2>
+      </div>
+      <p class="section-sub">خدمات متكاملة مصممة لتحقيق نمو حقيقي وقابل للقياس</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-megaphone"></i></div>
+        <h3>إدارة الحملات الإعلانية الشهرية</h3>
+        <p>إدارة احترافية كاملة للحملات الممولة على منصات التواصل الاجتماعي — من التخطيط والاستهداف وحتى التحسين المستمر لضمان أعلى عائد على الإنفاق.</p>
+        <div class="service-price">300,000 IQD <span>/ شهرياً</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>خطة المحتوى الشهري (الكالندر)</h3>
+        <p>خطة محتوى متكاملة وجاهزة للتنفيذ، تشمل جدول النشر والأفكار الإبداعية والنصوص المكتوبة المُحسّنة لكل منصة.</p>
+        <div class="service-price">250,000 IQD <span>/ شهرياً</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>إدارة حسابات السوشل ميديا</h3>
+        <p>إدارة متكاملة لحضورك على وسائل التواصل الاجتماعي — نشر المحتوى والتفاعل مع الجمهور وتحليل الأداء وبناء المجتمع.</p>
+        <div class="service-price">250,000 IQD <span>/ شهرياً</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>استشارات تسويقية</h3>
+        <p>جلسة استشارية مخصصة لتحليل وضعك التسويقي الحالي ووضع خطة واضحة لتحقيق أهدافك بأقل التكاليف وأعلى النتائج.</p>
+        <div class="service-price">75,000 IQD <span>/ جلسة</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <span class="section-tag">لماذا أنا</span>
+    <h2 class="section-title" style="color:var(--white)">ما يجعلني الخيار الأفضل</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <h4>نتائج موثّقة</h4>
+        <p>أكثر من 500 حملة إعلانية ناجحة تتحدث عن نفسها — ليست وعوداً بل أرقاماً فعلية</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <h4>فهم عميق للسوق</h4>
+        <p>خبرة متراكمة في أسواق متنوعة تمنحني القدرة على توجيه الرسالة الصحيحة للجمهور الصحيح</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <h4>محتوى يتحدث لغة جمهورك</h4>
+        <p>200+ مشروع محتوى يُبرز قدرتي على التكيّف مع صوت كل علامة تجارية وشخصيتها</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <h4>استراتيجيات مخصصة</h4>
+        <p>لا حلول جاهزة — كل عميل يحصل على خطة مبنية على احتياجاته وأهدافه الخاصة</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">05</div>
+        <h4>تواصل مستمر وشفافية</h4>
+        <p>تقارير واضحة ومتابعة دورية تبقيك على اطلاع دائم بأداء مشروعك</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">06</div>
+        <h4>التزام بالمواعيد</h4>
+        <p>احترام الوقت والمواعيد جزء أصيل من طريقة عملي — مشاريعك تُسلَّم في الموعد دائماً</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <span class="section-tag">تواصلي معي</span>
+      <h2 class="section-title">لنبدأ مشروعك<br>اليوم</h2>
+      <p class="section-sub">أهدافك التسويقية تبدأ بمحادثة — تواصلي معي وسأساعدك في وضع الخطة المناسبة</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+          <div class="contact-item-text">
+            <strong>واتساب</strong>
+            <a href="https://wa.me/9647853794900" target="_blank" style="color:var(--gold);text-decoration:none">07853794900</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+          <div class="contact-item-text">
+            <strong>حساب الأعمال على إنستغرام</strong>
+            <a href="https://www.instagram.com/nougta.media" target="_blank" style="color:var(--gold);text-decoration:none">@nougta.media</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم الكامل</label>
+          <input type="text" id="f-name" placeholder="اسمك هنا">
+        </div>
+        <div class="form-group">
+          <label>رقم الواتساب</label>
+          <input type="tel" id="f-phone" placeholder="07xxxxxxxxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>الخدمة المطلوبة</label>
+        <select id="f-service">
+          <option value="">اختر الخدمة</option>
+          <option>إدارة الحملات الإعلانية الشهرية</option>
+          <option>خطة المحتوى الشهري (الكالندر)</option>
+          <option>إدارة حسابات السوشل ميديا</option>
+          <option>استشارات تسويقية</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>تفاصيل المشروع</label>
+        <textarea id="f-msg" placeholder="أخبريني عن مشروعك وأهدافك..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="sendToWhatsApp()">
+        <i class="fab fa-whatsapp"></i> أرسل عبر واتساب
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 المهندسة كوثر قاسم · جميع الحقوق محفوظة ·
+    <a href="https://www.instagram.com/nougta.media" target="_blank">@nougta.media</a>
+  </p>
+</footer>
+
+<script>
+function sendToWhatsApp(){
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const service = document.getElementById('f-service').value;
+  const msg = document.getElementById('f-msg').value.trim();
+  if(!name || !phone){alert('يرجى ملء الاسم ورقم الواتساب');return;}
+  const text = `مرحباً! أنا ${name}%0Aرقمي: ${phone}%0Aالخدمة: ${service || 'غير محددة'}%0Aالرسالة: ${msg || '—'}`;
+  window.open(`https://wa.me/9647853794900?text=${text}`,'_blank');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
